@@ -7,7 +7,8 @@
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
 <body>
-<p>ÀÌ ÆäÀÌÁö¸¦ º¸·Á¸é, ÇÁ·¹ÀÓÀ» º¼ ¼ö ÀÖ´Â ºê¶ó¿ìÀú°¡ ÇÊ¿äÇÕ´Ï´Ù.</p>
+</br>
+<p>ì´ íŽ˜ì´ì§€ë¥¼ ë³´ë ¤ë©´, í”„ë ˆìž„ì„ ë³¼ ìˆ˜ ìžˆëŠ” ë¸Œë¼ìš°ì €ê°€ í•„ìš”í•©ë‹ˆë‹¤.</p>
 </body>
 </noframes>
 </frameset>
