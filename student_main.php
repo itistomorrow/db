@@ -7,7 +7,7 @@
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
 <body>
-<p>하이a트</p>
+<p>하이트</p>
 </body>
 </noframes>
 </frameset>
