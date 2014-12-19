@@ -7,7 +7,7 @@
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
 <body>
-<p>111</p>
+
 </body>
 </noframes>
 </frameset>
