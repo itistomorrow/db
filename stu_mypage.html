@@ -1,0 +1,104 @@
+<?
+include "includes/DBaccess.php";
+include "includes/session.php";
+	
+$_SESSION[ss_searchsub] = "";
+$_SESSION[ss_searchsub] = '0';
+
+$_SESSION[ss_tableOpt] = 1;
+$_SESSION[ss_tableInp] = "";
+?>
+<html>
+    <meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<?
+echo " ";
+$query = "SELECT A.구성원번호,A.이름,A.주민등록번호,A.학년, A.연락처,A.이메일,A.비밀번호
+			FROM 구성원정보 A 
+			where A.구성원번호 = '$_SESSION[ss_id]' ";
+$stu_info = oci_parse($connect,$query);
+oci_execute($stu_info);
+$data = oci_fetch_array($stu_info, OCI_ASSOC);
+?>
+<form name=SEARCH method=POST action="stu_update.html">
+
+<table width="588" height="392" align="center">
+    <tr>
+        <td width="120" height="30" >
+            <p align="center">학과</p>
+        </td>
+        
+        <td width="436" height="30"><? echo ("정보컴퓨터공학부"); ?></td>
+    </tr>
+    <tr>
+        <td width="120" height="30" >
+            <p align="center">학번</p>
+        </td>
+        <td width="436" height="30"> <? echo ($data[구성원번호]); ?> </td>
+    </tr>
+    <tr>
+        <td width="120" height="30" >
+            <p align="center">이름</p>
+        </td>
+        
+        <td width="436" height="30"><? echo ($data['이름']); ?> </td>
+    </tr>
+    <tr>
+        <td width="120" height="30">
+            <p align="center">주민등록번호</p>
+        </td>
+        
+        <td width="436" height="30"><? echo ($data['주민등록번호']); ?></td>
+    </tr>
+    <tr>
+        <td width="120" height="30">
+            <p align="center">학년</p>
+        </td>
+        <td width="436" height="30"><? echo ($data['학년']); ?></td>
+    </tr>
+    <tr>
+        <td width="120" height="30">
+            <p align="center">연락처(핸드폰)</p>
+        </td>
+        <td width="436" height="30">
+            <input type="text" name="phone_num" size="30" value="<? echo (trim($data['연락처'])); ?>">
+        </td>
+    </tr>
+    <tr>
+        <td width="120" height="30">
+            <p align="center">e-mail</p>
+        </td>
+        
+        <td width="436" height="30">
+            <input type="text" name="email" size="30" value="<? echo (trim($data['이메일'])); ?> ">
+        </td>
+    </tr>
+    <tr>
+        <td width="120" height="30">
+            <p align="center">현재비밀번호</p>
+        </td>
+        <td width="436" height="30"><input type="password" name="now_passwd"></td>
+    </tr>
+    <tr>
+        <td width="120" height="30">
+            <p align="center">새비밀번호</p>
+        </td> 
+        <td width="436" height="30"><input type="password" name="new_passwd"></td>
+    </tr>
+    <tr>
+        <td width="120" height="30" >
+            <p align="center">비밀번호 확인</p>
+        </td>
+       
+        <td width="436" height="30"><input type="password" name="new_passwdCheck"></td>
+    </tr>
+    <tr>
+        <td width="436" height="30">
+            <p align="right"><input type="submit" name="button" value="수정"></p>
+        </td>
+    </tr>
+</table>
+
+</form>
+</body>
+
+</html>

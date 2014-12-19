@@ -1,0 +1,113 @@
+<?
+
+include "includes/DBaccess.php";
+include "includes/session.php";
+$_SESSION[ss_tableOpt] = 1;
+$_SESSION[ss_tableInp] = "";
+$_SESSION[ss_year] = '2013';
+$_SESSION[ss_term] = '2';
+?>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+
+</head>
+<script language="JavaScript">
+var color = "#FFCF7E";
+
+function addRow(s_id, s_name, s_year)
+{
+	var tbody = document.getElementById("table_list").getElementsByTagName("TBODY")[0];
+	
+	var row = document.createElement("TR");
+	row.style.backgroundColor = color;
+	
+	var fm = document.createElement("FORM");				
+	fm.method="POST";
+	fm.action="prof_input.html";
+	
+	var td1 = document.createElement("TD");
+	td1body = "<p align='center'>" +s_id + "</p>";
+	td1.insertAdjacentHTML('beforeEnd', td1body );
+	
+	var td2 = document.createElement("TD");
+	td2body = "<p align='center'>" + s_name + "</p>";
+	td2.insertAdjacentHTML('beforeEnd', td2body );
+
+	var td3 = document.createElement("TD");
+	td3body = "<p align='center'>"+ s_year +"</p>";
+	td3.insertAdjacentHTML('beforeEnd', td3body );
+	
+	fm.appendChild(td1);
+	fm.appendChild(td2);
+	fm.appendChild(td3);
+	
+	
+	row.appendChild(fm);
+	
+	tbody.appendChild(row);
+	
+	if(color == "#FFCF7E") color = "#FFCF7E";
+	else color = "#FFCF7E";
+}
+
+</script>
+	<style type="text/css">
+		body { font-family : 'Malgun Gothic'; font-size : 11pt; }
+		td { font-family : 'Malgun Gothic'; font-size : 11pt; }
+		</style>
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" >
+<? 
+if( $_SESSION[subject_num] == "" ){
+	echo("<script language=\"javascript\"> alert(\"과목을 선택하세요.\");</script>");
+    echo("<script>location.replace('./prof_select.html');
+		parent.topp.document.men_choice.src = \"images/pf_menu_choice_sel.jpg\";
+		parent.topp.document.men_attend.src = \"images/pf_menu_attend.jpg\";		</script>"); 
+}
+?>
+<form>
+<?php
+$data = oci_parse($connect, "SELECT count(구성원번호) as 학생수 from 수강 where 과목번호 = '$_SESSION[subject_num]' and 과목분반 = 
+'$_SESSION[class_num]' and 수강학기 = '$_SESSION[ss_term]' and 수강년도 = '$_SESSION[ss_year]'");
+oci_execute($data);
+$result1 = oci_fetch_array($data);
+$data = oci_parse($connect, "SELECT 수강인원 from 수업편성 where 과목번호 = '$_SESSION[subject_num]'");
+oci_execute($data);
+$result = oci_fetch_array($data);
+echo "<p align='center'>( $_SESSION[subject_num]  &nbsp $_SESSION[class_num] 분반 )</p>";
+echo "<p align='center'>현재 수강인원 = ( $result1[학생수] / $result[수강인원] )</p>";
+?>
+<table id = "table_list" border="0" width="800" align="center">
+	<tbody>
+		<tr>		
+			<td width="200" height="50" bgcolor="#FFFF7E" bordercolor="white">
+				<p align='center'>학번</p>
+			</td>
+			<td width="200" height="50" bgcolor="#FFFF7E" bordercolor="white">
+				<p align='center'>이름</p>
+			</td>
+			<td width="200" height="50" bgcolor="#FFFF7E" bordercolor="white">
+				<p align='center'>학년</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<? 
+	$data = oci_parse($connect, "select 구성원번호 from 수강 where 과목번호 = '$_SESSION[subject_num]' and 과목분반 = '$_SESSION[class_num]'  and 수강학기 = '$_SESSION[ss_term]' and 수강년도 = '$_SESSION[ss_year]'");	
+	oci_execute($data);
+	while($result = oci_fetch_array($data)) {
+		$data1 = oci_parse($connect, "select 구성원번호, 이름, 학년 from 구성원정보 where 구성원번호 = '$result[구성원번호]'");
+		oci_execute($data1);
+		$result1 = oci_fetch_array($data1);
+		echo "<script language=javascript> addRow(\"$result1[구성원번호]\", \"$result1[이름]\", \"$result1[학년]\"); </script>";
+	}
+?>
+
+
+</form>
+</body>
+
+</html>
+
+

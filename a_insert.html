@@ -1,0 +1,105 @@
+ <?
+include "includes/DBaccess.php";
+include "includes/session.php";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<style type="text/css">
+body { font-family : 맑은고딕; font-size : 10pt; }
+td {
+	font-family : 맑은고딕;
+	font-size : 10pt;
+}
+</style>
+
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" >
+
+<form name=SEARCH method=POST action="a_insert.php">
+<p>&nbsp;</p>
+
+<table border="0" width="517" height="325" align="center">
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>구성원번호</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31"><input type="text" name="number" /></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>이 름</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31"><input type="text" name="name" /></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>생년월일</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31"><input type="text" name="peoplenumber" /></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>등록일자</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31"><input type="text" name="registdate" /></td>
+    </tr>
+    <tr> 
+      
+<td width="160" height="12">
+            <p align="center"><b>&nbsp;</b></p>
+        </td>
+        <td width="12" height="12">&nbsp;</td>
+        <td width="331" height="12"></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>연락처</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31">
+            <input type="text" name="phone_num" />
+        </td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>e-mail</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31">
+            <input type="email" name="email" />
+        </td>
+    </tr>
+    <tr>
+        <td width="160" height="1">
+            <p align="center"><b>&nbsp;</b></p>
+        </td>
+        <td width="12" height="1">&nbsp;</td>
+        <td width="331" height="1">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>비밀번호</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="331" height="31"><input type="password" name="passwd"></td>
+    </tr>
+    <tr>
+        <td width="160" height="23">&nbsp;</td>
+        <td width="12" height="23">&nbsp;</td>
+        <td width="331" height="23"><p align="right"><input type="submit" name="button" value="INSERT"></p>
+        </td>
+    </tr>
+</table>
+
+</form>
+</body>
+
+</html> 

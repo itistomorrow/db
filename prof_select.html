@@ -1,0 +1,96 @@
+<?php
+include "includes/DBaccess.php";
+include "includes/session.php";
+$_SESSION[ss_tableOpt] = 1;
+$_SESSION[ss_tableInp] = "";
+
+?>
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+    
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+
+		<script language="JavaScript">
+			var color = "#FFCF7E";
+
+			function addRow(subject_num, subject_name, class_num)
+			{
+				var tbody = document.getElementById("table_list").getElementsByTagName("TBODY")[0];
+				var row = document.createElement("TR");
+				row.style.backgroundColor = color;
+				
+				var fm = document.createElement("FORM");
+				fm.method="POST";
+				fm.action="prof_select.php";
+				
+				var td1 = document.createElement("TD");
+				td1body = "<p align='center'>"+ subject_num +"<input align='center' size='4' type='hidden' maxlength='2' name='subject_num' value="+ subject_num+"></p>";
+				td1.insertAdjacentHTML('beforeEnd', td1body );
+				
+				var td2 = document.createElement("TD");
+				td2body = "<p align='center'>"+ subject_name +"<input align='center' size='10' type='hidden' maxlength='2' name='subject_name' value="+ subject_name+"></p>";
+				td2.insertAdjacentHTML('beforeEnd', td2body );
+
+				var td3 = document.createElement("TD");
+				td3body = "<p align='center'>"+class_num +"<input align='center' size='2' type='hidden' maxlength='2' name='class_num' value="+ class_num+"></p>";
+				td3.insertAdjacentHTML('beforeEnd', td3body );
+				
+				var td4 = document.createElement("TD");	
+				td4body = "<p align='center'><input align='center' size='2' type='submit' maxlength='2' value='선택'></p>";
+				td4.insertAdjacentHTML('beforeEnd', td4body );
+				
+				fm.appendChild(td1);
+				fm.appendChild(td2);
+				fm.appendChild(td3);
+				fm.appendChild(td4);
+				
+				row.appendChild(fm);
+				
+				tbody.appendChild(row);
+				
+				if(color == "#FFCF7E") color = "#FFCF7E";
+				else color = "#FFCF7E";
+			}
+		</script>
+		<style type="text/css">
+		body { font-family : 'Malgun Gothic'; font-size : 10pt; }
+		td { font-family : 'Malgun Gothic'; font-size : 10pt; }
+		</style>
+	</head>
+
+	<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" >
+		<form>
+			<p align="center"><font size="3"><b>열람하거나 수정할 과목을 선택하신 뒤, 서비스를 이용하실수 있습니다.</b></font></p>
+			<br>
+			<table id = "table_list" border="0" width="660" height="70" align="center">
+				<tbody>
+					<tr>		
+						<td width="250" height="50" bgcolor="#FFFF7E" bordercolor="white">
+							<p align='center'>과목번호</p>
+						</td>
+						<td width="250" height="50" bgcolor="#FFFF7E" bordercolor="white">
+							<p align='center'>과목이름</p>
+						</td>
+						<td width="80" height="50" bgcolor="#FFFF7E" bordercolor="white">
+							<p align='center'>분반</p>
+						</td>
+						<td width="80" height="50" bgcolor="#FFFF7E" bordercolor="white">
+							<p align='center'> </p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<? 
+				$data = oci_parse($connect, "SELECT 과목.과목번호,과목.과목이름,수업편성.과목분반 FROM 수업편성,과목 WHERE 수업편성.구성원번호= $_SESSION[ss_id] and 수업편성.과목번호 = 과목.과목번호");	
+				oci_execute($data);
+				while($result = oci_fetch_array($data)) {
+					echo "<script language=javascript> addRow(\"$result[과목번호]\", \"$result[과목이름]\", \"$result[과목분반]\"); </script>";
+				}
+			?>
+		</form>
+	</body>
+
+</html>
+
+

@@ -1,0 +1,130 @@
+<?
+include "includes/DBaccess.php";
+include "includes/session.php";
+	
+$_SESSION[ss_searchsub] = "";
+$_SESSION[ss_searchsub] = '0';
+
+$_SESSION[ss_tableOpt] = 1;
+$_SESSION[ss_tableInp] = "";
+?>
+<html>
+    <meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<head>
+<style type="text/css">
+body { font-family : 맑은고딕; font-size : 10pt; }
+td { font-family : 맑은고딕; font-size : 10pt; }
+</style>
+
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" >
+<?
+echo " ";
+$query = "SELECT A.구성원번호,A.이름,A.주민등록번호, A.연락처,A.이메일,A.비밀번호
+			FROM 구성원정보 A 
+			where A.구성원번호 = '$_SESSION[ss_id]'
+           ";
+$result = oci_parse($connect,$query);
+oci_execute($result);
+$data = oci_fetch_array($result, OCI_ASSOC);
+?>
+<form name=SEARCH method=POST action="good2.html">
+<p>&nbsp;</p>
+
+<table border="0" width="623" height="423" align="center">
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>학번</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"> <? echo ($data[구성원번호]); ?> </td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>이름</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"><? echo ($data['이름']); ?> </td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>주민등록번호</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"><? echo ($data['주민등록번호']); ?></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>학과</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"><? echo ("정보컴퓨터공학부"); ?></td>
+    </tr>
+
+    <tr>
+        <td width="160" height="12">
+            <p align="center"><b>&nbsp;</b></p>
+        </td>
+        <td width="12" height="12">&nbsp;</td>
+        <td width="436" height="12"></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>연락처</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31">
+            <input type="text" name="phone_num" size="60" value="<? echo (trim($data['연락처'])); ?>">
+        </td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>e-mail</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31">
+            <input type="text" name="email" size="60" value="<? echo (trim($data['이메일'])); ?> ">
+        </td>
+    </tr>
+    <tr>
+        <td width="160" height="1">
+            <p align="center"><b>&nbsp;</b></p>
+        </td>
+        <td width="12" height="1">&nbsp;</td>
+        <td width="436" height="1">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>현재비밀번호</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"><input type="password" name="now_passwd"></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>새비밀번호</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"><input type="password" name="new_passwd"></td>
+    </tr>
+    <tr>
+        <td width="160" height="31" bgcolor="#E8EDFf">
+            <p align="center"><b>새비밀번호 확인</b></p>
+        </td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31"><input type="password" name="new_passwdCheck"></td>
+    </tr>
+    <tr>
+        <td width="160" height="31">&nbsp;</td>
+        <td width="12" height="31">&nbsp;</td>
+        <td width="436" height="31">
+            <p align="right"><input type="submit" name="button" value="수정하기"></p>
+        </td>
+    </tr>
+</table>
+
+</form>
+</body>
+
+</html>
