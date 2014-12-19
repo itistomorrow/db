@@ -42,7 +42,7 @@ if ($result['구성원번호'] == "") {
 	if ($flag == "학생") {
 		echo("<meta http-equiv='Refresh' content='0; URL=student_main.php'>");
 	} else if ($flag == "교수") {
-		echo("<meta http-equiv='Refresh' content='0; URL=proffesor_main.php'>");
+		echo("<meta http-equiv='Refresh' content='0; URL=prof_select.html'>");
 	} else if ($flag == "조교") {
 		echo("<meta http-equiv='Refresh' content='0; URL=ass_attend.html'>");
 	} else if ($flag == "관리자") {

@@ -6,10 +6,6 @@ $_SESSION[ss_tableOpt] = 1;
 $_SESSION[ss_tableInp] = "";
 $_SESSION[ss_year] = '2014';
 $_SESSION[ss_term] = '2';
-$ids = $_SESSION["ss_id"];
-$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
-oci_execute($result);
-$data = oci_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -115,8 +111,14 @@ $data = oci_fetch_array($result);
 				<input type="submit" name="btn1" onClick="insert_sub()" value="insert subject">
 				&nbsp;
 				<input type="submit" name="btn1" onClick="insert_stu()" value="insert student">
+
+				<? $ids = $_SESSION["ss_id"];
+				$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
+				oci_execute($result);
+				$data = oci_fetch_array($result);
+				?>
 				<?php echo $data["이름"] ?> <?php echo $data["구성원구분"]?>
-				<a href="Logout.php">
+				<a href="logout.php">
 				<input type="submit" name="btn1" value="Logout">
 				</a>
 			</nav>
