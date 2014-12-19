@@ -14,14 +14,14 @@ if ($result['구성원번호'] == "") {
 		alert(\"아이디를 잘못 입력했습니다.\");
 		history.go(-1);
 		</script>");
-	echo("<meta http-equiv='Refresh' content='0; URL=index.html'>");
+	echo("<meta http-equiv='Refresh' content='0; URL=index.php'>");
 } else if ($result['비밀번호'] != $pass) {
 	echo("
 		<script language=javascript>
 		alert(\"비밀번호를 잘못 입력했습니다.\");
 		history.go(-1);
 		</script>");
-	echo("<meta http-equiv='Refresh' content='0; URL=index.html'>");
+	echo("<meta http-equiv='Refresh' content='0; URL=index.php'>");
 } else {
 	@session_start();
 	$_SESSION[ss_id] = $ids;
@@ -48,7 +48,7 @@ if ($result['구성원번호'] == "") {
 	} else if ($flag == "관리자") {
 		echo("<meta http-equiv='Refresh' content='0; URL=manager_main.php'>");
 	} else {
-		echo("<meta http-equiv='Refresh' content='0; URL=index.html'>");
+		echo("<meta http-equiv='Refresh' content='0; URL=index.php'>");
 	}
 }
 ?>
