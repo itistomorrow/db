@@ -15,12 +15,12 @@ $data = oci_fetch_array($result);
 		<meta http-equiv="content-type" content="text/html; charset=euc-kr">
 		<script language="JavaScript">
 			function mem_list() {
-				window.location.replace("manager_main.php");
+				window.location.assign("manager_main.php");
 
 			}
 
 			function mem_insert() {
-				window.location.replace("manager_insert.html");
+				window.location.assign("manager_insert.html");
 			}
 
 			function addRow(var2, var3, var4, var5, var6, var7) {

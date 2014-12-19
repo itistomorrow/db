@@ -37,6 +37,6 @@ if($_POST[new_passwd]) {
 }
 
 echo ("	<script language=javascript> alert(\"성공적으로 정보를 수정하였습니다.\"); </script>");
-echo("<meta http-equiv='Refresh' content='0; URL=a_search.html'>");
+echo("<meta http-equiv='Refresh' content='0; URL=ass_modfiy.html'>");
 
 ?>

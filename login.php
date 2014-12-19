@@ -44,7 +44,7 @@ if ($result['구성원번호'] == "") {
 	} else if ($flag == "교수") {
 		echo("<meta http-equiv='Refresh' content='0; URL=proffesor_main.php'>");
 	} else if ($flag == "조교") {
-		echo("<meta http-equiv='Refresh' content='0; URL=assistent_main.php'>");
+		echo("<meta http-equiv='Refresh' content='0; URL=ass_attend.html'>");
 	} else if ($flag == "관리자") {
 		echo("<meta http-equiv='Refresh' content='0; URL=manager_main.php'>");
 	} else {

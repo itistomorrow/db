@@ -15,5 +15,5 @@ $_SESSION[ss_tableInp1] = $_POST[tableInput1];
 $_SESSION[ss_tableInp2] = $_POST[tableInput2];
 
 
-echo("<meta http-equiv='Refresh' content='0; URL=a_attend.html'>");
+echo("<meta http-equiv='Refresh' content='0; URL=ass_attend.html'>");
 ?>
