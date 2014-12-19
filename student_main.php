@@ -7,7 +7,7 @@
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
 <body>
-<p>이 페이지를 보려면, 프레임을 볼 수 있는 브라우저가 필요합니다.</p>
+<p>만드는중</p>
 </body>
 </noframes>
 </frameset>
