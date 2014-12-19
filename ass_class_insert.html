@@ -1,12 +1,6 @@
 <?
-include_once "includes/DBaccess.php";
-include_once "includes/session.php";
-
-$_SESSION[ss_searchsub] = "";
-$_SESSION[ss_searchsub] = '0';
-
-$_SESSION[ss_tableOpt] = 1;
-$_SESSION[ss_tableInp] = "";
+include "includes/DBaccess.php";
+include "includes/session.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +12,7 @@ $_SESSION[ss_tableInp] = "";
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>template</title>
+		<title></title>
 		<meta name="description" content="">
 		<meta name="author" content="DaHam">
 
@@ -41,132 +35,153 @@ $_SESSION[ss_tableInp] = "";
 
 			</header>
 			<nav>
-				<p>
 
 			</nav>
 
 			<div>
-				<?
-				echo " ";
-				$query = "SELECT A.구성원번호,A.이름,A.주민등록번호, A.연락처,A.이메일,A.비밀번호
-				FROM 구성원정보 A
-				where A.구성원번호 = '$_SESSION[ss_id]'
-				";
-				$result = oci_parse($connect,$query);
-				oci_execute($result);
-				$data = oci_fetch_array($result, OCI_ASSOC);
-				?>
-				<form name=SEARCH method=POST action="ass_modify.php">
+				<form name=SEARCH method=POST action="ass_class_insert.php">
 					<p>
 						&nbsp;
 					</p>
 
-					<table border="0" width="623" height="423" align="center">
+					<table border="0" width="623" height="325" align="center">
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>학번</b>
+								<b>과목번호</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"> <? echo ($data[구성원번호]); ?> </td>
+							<td width="436" height="31">
+							<input type="text" name="subjectNum" />
+							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>이름</b>
+								<b>과목분반</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"><? echo ($data['이름']); ?> </td>
+							<td width="436" height="31">
+							<input type="text" name="classNum" />
+							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>주민등록번호</b>
+								<b>교수번호</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"><? echo ($data['주민등록번호']); ?></td>
+							<td width="436" height="31">
+							<input type="text" name="idNum" />
+							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>학과</b>
+								<b>과목이름</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"><? echo ("정보컴퓨터공학부"); ?></td>
+							<td width="436" height="31">
+							<input type="text" name="subjectName" />
+							</td>
+						</tr>
+						<tr>
+							<td width="160" height="31" bgcolor="#E8EDFf">
+							<p align="center">
+								<b>수강학년</b>
+							</p></td>
+							<td width="12" height="31">&nbsp;</td>
+							<td width="436" height="31">
+							<input type="text" name="subjectGrade" />
+							</td>
+						</tr>
+						<tr>
+							<td width="160" height="31" bgcolor="#E8EDFf">
+							<p align="center">
+								<b>수강학기</b>
+							</p></td>
+							<td width="12" height="31">&nbsp;</td>
+							<td width="436" height="31">
+							<input type="text" name="subjectTerm" />
+							</td>
+						</tr>
+						<tr>
+							<td width="160" height="31" bgcolor="#E8EDFf">
+							<p align="center">
+								<b>과목학점</b>
+							</p></td>
+							<td width="12" height="31">&nbsp;</td>
+							<td width="436" height="31">
+							<input type="text" name="subjectScore" />
+							</td>
+						</tr>
+						<tr>
+							<td width="160" height="31" bgcolor="#E8EDFf">
+							<p align="center">
+								<b>과목구분</b>
+							</p></td>
+							<td width="12" height="31">&nbsp;</td>
+							<td width="436" height="31">
+							<input type="text" name="subjectVarify" />
+							</td>
+						</tr>
+						<tr>
+							<td width="160" height="31" bgcolor="#E8EDFf">
+							<p align="center">
+								<b>수강가능인원</b>
+							</p></td>
+							<td width="12" height="31">&nbsp;</td>
+							<td width="436" height="31">
+							<input type="text" name="subjectMax" />
+							</td>
+						</tr>
+						<tr>
+							<td width="160" height="31" bgcolor="#E8EDFf">
+							<p align="center">
+								<b>강의실</b>
+							</p></td>
+							<td width="12" height="31">&nbsp;</td>
+							<td width="436" height="31">
+							<input type="text" name="classroomNum" />
+							</td>
 						</tr>
 
 						<tr>
-							<td width="160" height="12">
-							<p align="center">
-								<b>&nbsp;</b>
-							</p></td>
-							<td width="12" height="12">&nbsp;</td>
-							<td width="436" height="12"></td>
-						</tr>
-						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>연락처</b>
+								<b>시작시간</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
 							<td width="436" height="31">
-							<input type="text" name="phone_num" size="60" value="<? echo (trim($data['연락처'])); ?>">
+							<input type="text" name="subjectStart" />
 							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>e-mail</b>
+								<b>종료시간</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
 							<td width="436" height="31">
-							<input type="text" name="email" size="60" value="<? echo (trim($data['이메일'])); ?> ">
-							</td>
-						</tr>
-						<tr>
-							<td width="160" height="1">
-							<p align="center">
-								<b>&nbsp;</b>
-							</p></td>
-							<td width="12" height="1">&nbsp;</td>
-							<td width="436" height="1">&nbsp;</td>
-						</tr>
-						<tr>
-							<td width="160" height="31" bgcolor="#E8EDFf">
-							<p align="center">
-								<b>현재비밀번호</b>
-							</p></td>
-							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="password" name="now_passwd">
+							<input type="text" name="subjectEnd" />
 							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>새비밀번호</b>
+								<b>강의요일</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
 							<td width="436" height="31">
-							<input type="password" name="new_passwd">
+							<input type="text" name="subjectDay" />
 							</td>
 						</tr>
 						<tr>
-							<td width="160" height="31" bgcolor="#E8EDFf">
-							<p align="center">
-								<b>새비밀번호 확인</b>
-							</p></td>
-							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="password" name="new_passwdCheck">
-							</td>
-						</tr>
-						<tr>
-							<td width="160" height="31">&nbsp;</td>
-							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
+							<td width="160" height="23">&nbsp;</td>
+							<td width="12" height="23">&nbsp;</td>
+							<td width="436" height="23">
 							<p align="right">
-								<input type="submit" name="button" value="수정하기">
+								<input type="submit" name="button" value="INSERT">
 							</p></td>
 						</tr>
 					</table>
@@ -184,4 +199,28 @@ $_SESSION[ss_tableInp] = "";
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 	</body>
+</html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+		<style type="text/css">
+			body {
+				font-family: 맑은고딕;
+				font-size: 10pt;
+			}
+			td {
+				font-family: 맑은고딕;
+				font-size: 10pt;
+			}
+		</style>
+
+	</head>
+
+	<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" >
+
+	</body>
+
 </html>

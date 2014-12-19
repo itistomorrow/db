@@ -74,6 +74,6 @@ if(!$_POST[subjectNum] ) {
 
 
 echo ("	<script language=javascript> alert(\"성공적으로 정보를 삽입하였습니다.\"); </script>");
-echo("<meta http-equiv='Refresh' content='0; URL=a_class_insert.html'>");
+echo("<meta http-equiv='Refresh' content='0; URL=ass_class_insert.html'>");
 
 ?>

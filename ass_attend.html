@@ -6,6 +6,10 @@ $_SESSION[ss_tableOpt] = 1;
 $_SESSION[ss_tableInp] = "";
 $_SESSION[ss_year] = '2014';
 $_SESSION[ss_term] = '2';
+$ids = $_SESSION["ss_id"];
+$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
+oci_execute($result);
+$data = oci_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +94,7 @@ $_SESSION[ss_term] = '2';
 			}
 
 			function insert_stu() {
-				window.location.assign("ass_insert.html");
+				window.location.assign("ass_subject_insert.html");
 
 			}
 
@@ -111,6 +115,10 @@ $_SESSION[ss_term] = '2';
 				<input type="submit" name="btn1" onClick="insert_sub()" value="insert subject">
 				&nbsp;
 				<input type="submit" name="btn1" onClick="insert_stu()" value="insert student">
+				<?php echo $data["이름"] ?> <?php echo $data["구성원구분"]?>
+				<a href="Logout.php">
+				<input type="submit" name="btn1" value="Logout">
+				</a>
 			</nav>
 
 			<div>
@@ -129,20 +137,27 @@ $_SESSION[ss_term] = '2';
 						</tr>
 					</table>
 					<?php
-$data = oci_parse($connect, "SELECT count(구성원번호) as 학생수 from 수강 where 과목번호 = '$_SESSION[ss_tableInp1]' and 과목분반 = '$_SESSION[ss_tableInp2]' and 수강학기 = $_SESSION[ss_term] and 수강년도 = '$_SESSION[ss_year]'");
-oci_execute($data);
-$result1 = oci_fetch_array($data);
+					$data = oci_parse($connect, "SELECT count(구성원번호) as 학생수 from 수강 where 과목번호 = '$_SESSION[ss_tableInp1]' and 과목분반 = '$_SESSION[ss_tableInp2]' and 수강학기 = $_SESSION[ss_term] and 수강년도 = '$_SESSION[ss_year]'");
+					oci_execute($data);
+					$result1 = oci_fetch_array($data);
 
-$data2 = oci_parse($connect, "SELECT 수강인원 from 수업편성 where 과목번호 = '$_SESSION[ss_tableInp1]' and 과목분반 = '$_SESSION[ss_tableInp2]'");
-oci_execute($data2);
-$result = oci_fetch_array($data2);
+					$data2 = oci_parse($connect, "SELECT 수강인원 from 수업편성 where 과목번호 = '$_SESSION[ss_tableInp1]' and 과목분반 = '$_SESSION[ss_tableInp2]'");
+					oci_execute($data2);
+					$result = oci_fetch_array($data2);
 
-$data3 = oci_parse($connect,"select 과목이름 from 과목 where 과목번호 = '$_SESSION[ss_tableInp1]'");
-oci_execute($data3);
-$result3 = oci_fetch_array($data3);
+					$data3 = oci_parse($connect,"select 과목이름 from 과목 where 과목번호 = '$_SESSION[ss_tableInp1]'");
+					oci_execute($data3);
+					$result3 = oci_fetch_array($data3);
 
-echo "<p align='center'>$result3[과목이름] / $_SESSION[ss_tableInp2]분반</p>";
-echo "<p align='center'>현재 수강인원 = ( $result1[학생수] / $result[수강인원] )</p>";
+					echo "
+					<p align='center'>
+						$result3[과목이름] / $_SESSION[ss_tableInp2]분반
+					</p>
+					";
+					echo "
+					<p align='center'>
+						현재 수강인원 = ( $result1[학생수] / $result[수강인원] )
+					</p>";
 					?>
 					<table id = "table_list" border="0" width="800" align="center">
 						<tbody>
@@ -163,14 +178,17 @@ echo "<p align='center'>현재 수강인원 = ( $result1[학생수] / $result[수강인원] )
 						</tbody>
 					</table>
 					<?
-$data = oci_parse($connect, "select 구성원번호 from 수강 where 과목번호 = '$_SESSION[ss_tableInp1]' and 과목분반 = '$_SESSION[ss_tableInp2]' and 수강학기 = $_SESSION[ss_term] and 수강년도 = '$_SESSION[ss_year]'");
-oci_execute($data);
-while($result = oci_fetch_array($data)) {
-$data1 = oci_parse($connect, "select 구성원번호, 이름, 학년 from 구성원정보 where 구성원번호 = '$result[구성원번호]'");
-oci_execute($data1);
-$result1 = oci_fetch_array($data1);
-echo "<script language=javascript> addRow(\"$result1[구성원번호]\", \"$result1[이름]\", \"$result1[학년]\"); </script>";
-}
+					$data = oci_parse($connect, "select 구성원번호 from 수강 where 과목번호 = '$_SESSION[ss_tableInp1]' and 과목분반 = '$_SESSION[ss_tableInp2]' and 수강학기 = $_SESSION[ss_term] and 수강년도 = '$_SESSION[ss_year]'");
+					oci_execute($data);
+					while($result = oci_fetch_array($data)) {
+					$data1 = oci_parse($connect, "select 구성원번호, 이름, 학년 from 구성원정보 where 구성원번호 = '$result[구성원번호]'");
+					oci_execute($data1);
+					$result1 = oci_fetch_array($data1);
+					echo "
+					<script language=javascript>
+addRow(\"$result1[구성원번호]\", \"$result1[이름]\", \"$result1[학년]\");
+					</script>";
+					}
 					?>
 				</form>
 			</div>

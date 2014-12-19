@@ -1,12 +1,6 @@
 <?
-include_once "includes/DBaccess.php";
-include_once "includes/session.php";
-
-$_SESSION[ss_searchsub] = "";
-$_SESSION[ss_searchsub] = '0';
-
-$_SESSION[ss_tableOpt] = 1;
-$_SESSION[ss_tableInp] = "";
+include "includes/DBaccess.php";
+include "includes/session.php";
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +12,7 @@ $_SESSION[ss_tableInp] = "";
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>template</title>
+		<title></title>
 		<meta name="description" content="">
 		<meta name="author" content="DaHam">
 
@@ -41,67 +35,65 @@ $_SESSION[ss_tableInp] = "";
 
 			</header>
 			<nav>
-				<p>
 
 			</nav>
 
 			<div>
-				<?
-				echo " ";
-				$query = "SELECT A.구성원번호,A.이름,A.주민등록번호, A.연락처,A.이메일,A.비밀번호
-				FROM 구성원정보 A
-				where A.구성원번호 = '$_SESSION[ss_id]'
-				";
-				$result = oci_parse($connect,$query);
-				oci_execute($result);
-				$data = oci_fetch_array($result, OCI_ASSOC);
-				?>
-				<form name=SEARCH method=POST action="ass_modify.php">
+
+				<form name=SEARCH method=POST action="ass_subject_insert.php">
 					<p>
 						&nbsp;
 					</p>
 
-					<table border="0" width="623" height="423" align="center">
+					<table border="0" width="517" height="325" align="center">
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>학번</b>
+								<b>구성원번호</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"> <? echo ($data[구성원번호]); ?> </td>
+							<td width="331" height="31">
+							<input type="text" name="number" />
+							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>이름</b>
+								<b>이 름</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"><? echo ($data['이름']); ?> </td>
+							<td width="331" height="31">
+							<input type="text" name="name" />
+							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>주민등록번호</b>
+								<b>생년월일</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"><? echo ($data['주민등록번호']); ?></td>
+							<td width="331" height="31">
+							<input type="text" name="peoplenumber" />
+							</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>학과</b>
+								<b>등록일자</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31"><? echo ("정보컴퓨터공학부"); ?></td>
+							<td width="331" height="31">
+							<input type="text" name="registdate" />
+							</td>
 						</tr>
+						<tr>
 
-						<tr>
 							<td width="160" height="12">
 							<p align="center">
 								<b>&nbsp;</b>
 							</p></td>
 							<td width="12" height="12">&nbsp;</td>
-							<td width="436" height="12"></td>
+							<td width="331" height="12"></td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
@@ -109,8 +101,8 @@ $_SESSION[ss_tableInp] = "";
 								<b>연락처</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="text" name="phone_num" size="60" value="<? echo (trim($data['연락처'])); ?>">
+							<td width="331" height="31">
+							<input type="text" name="phone_num" />
 							</td>
 						</tr>
 						<tr>
@@ -119,8 +111,8 @@ $_SESSION[ss_tableInp] = "";
 								<b>e-mail</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="text" name="email" size="60" value="<? echo (trim($data['이메일'])); ?> ">
+							<td width="331" height="31">
+							<input type="email" name="email" />
 							</td>
 						</tr>
 						<tr>
@@ -129,44 +121,24 @@ $_SESSION[ss_tableInp] = "";
 								<b>&nbsp;</b>
 							</p></td>
 							<td width="12" height="1">&nbsp;</td>
-							<td width="436" height="1">&nbsp;</td>
+							<td width="331" height="1">&nbsp;</td>
 						</tr>
 						<tr>
 							<td width="160" height="31" bgcolor="#E8EDFf">
 							<p align="center">
-								<b>현재비밀번호</b>
+								<b>비밀번호</b>
 							</p></td>
 							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="password" name="now_passwd">
+							<td width="331" height="31">
+							<input type="password" name="passwd">
 							</td>
 						</tr>
 						<tr>
-							<td width="160" height="31" bgcolor="#E8EDFf">
-							<p align="center">
-								<b>새비밀번호</b>
-							</p></td>
-							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="password" name="new_passwd">
-							</td>
-						</tr>
-						<tr>
-							<td width="160" height="31" bgcolor="#E8EDFf">
-							<p align="center">
-								<b>새비밀번호 확인</b>
-							</p></td>
-							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
-							<input type="password" name="new_passwdCheck">
-							</td>
-						</tr>
-						<tr>
-							<td width="160" height="31">&nbsp;</td>
-							<td width="12" height="31">&nbsp;</td>
-							<td width="436" height="31">
+							<td width="160" height="23">&nbsp;</td>
+							<td width="12" height="23">&nbsp;</td>
+							<td width="331" height="23">
 							<p align="right">
-								<input type="submit" name="button" value="수정하기">
+								<input type="submit" name="button" value="INSERT">
 							</p></td>
 						</tr>
 					</table>
