@@ -7,7 +7,7 @@
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
 <body>
-<p>hello </p>
+<p>hellÈ÷È÷o </p>
 </body>
 </noframes>
 </frameset>
