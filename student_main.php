@@ -6,8 +6,12 @@
 <frame name="top" frameborder="0" src="stu_menu.html" scrolling="no" noresize>
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
-<body>
-<p>hellÈ÷È÷o </p>
+<body><<<<<<< HEAD
+
+=======
+</br>
+<p>¿ÀÀ×</p>
+>>>>>>> 306b5ebe0293cd7a5be6bcd06f725cb25b993c1f
 </body>
 </noframes>
 </frameset>
