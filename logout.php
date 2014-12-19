@@ -1,3 +1,4 @@
+<meta charset="euc-kr">
 <?php
 include "includes/session.php";
 

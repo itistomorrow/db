@@ -4,141 +4,205 @@ include "includes/DBaccess.php";
 include "includes/session.php";
 
 if( $_SESSION[subject_num] == "" ){
-	echo("<script language=\"javascript\"> alert(\"과목을 선택하세요.\");</script>");
-	echo("<script>location.replace('./prof_select.html');
-		parent.topp.document.men_choice.src = \"images/pf_menu_choice_sel.jpg\";
-		parent.topp.document.men_show.src = \"images/pf_menu_show.jpg\";		
-		</script>"); 
+echo("
+<script language=\"javascript\"> alert(\"과목을 선택하세요.\");</script>");
+echo("<script>location.replace('./prof_select.html');
+parent.topp.document.men_choice.src = \"images/pf_menu_choice_sel.jpg\";
+parent.topp.document.men_show.src = \"images/pf_menu_show.jpg\";
+</script>");
 }
 ?>
+	<!DOCTYPE html>
+	<html lang="kr">
+	<head>
+	<meta charset="euc-kr">
 
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=euc-kr">
-<script language="JavaScript">
-var color = "#FFCF7E";
-var var1 = 1;
-function addRow(var2, var3, var4, var5, var6, var7, var8, var9)
-{
-	
-	var tbody = document.getElementById("output_table").getElementsByTagName("TBODY")[0];
-	var row = document.createElement("TR");
-	row.style.backgroundColor = color;
-	
-	var td1 = document.createElement("TD");
-	td1body = "<p align='center'>" + var1 + "</p>";
-	td1.insertAdjacentHTML('beforeEnd', td1body );
-	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+	Remove this if you use the .htaccess -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	var td2 = document.createElement("TD");
-	td2body = "<p align='center'>" + var2 + "</p>";
-	td2.insertAdjacentHTML('beforeEnd', td2body );
+	<title>
 
-	var td3 = document.createElement("TD");
-	td3body = "<p align='center'>" + var3 + "</p>";
-	td3.insertAdjacentHTML('beforeEnd', td3body );
+	</title>
+	<meta name="description" content="">
+	<meta name="author" content="DaHam">
 
-	var td4 = document.createElement("TD");
-	td4body = "<p align='center'>" + var4 + "</p>";
-	td4.insertAdjacentHTML('beforeEnd', td4body );	
-	
-	var td5 = document.createElement("TD");
-	td5body = "<p align='center'>" + var5 + "</p>";
-	td5.insertAdjacentHTML('beforeEnd', td5body );
-	
-	var td6 = document.createElement("TD");
-	td6body = "<p align='center'>" + var6 + "</p>";
-	td6.insertAdjacentHTML('beforeEnd', td6body );
-	
-	var td7 = document.createElement("TD");
-	td7body = "<p align='center'>" + var7 + "</p>";
-	td7.insertAdjacentHTML('beforeEnd', td7body );
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
 
-	var td8 = document.createElement("TD");
-	td8body = "<p align='center'>" + var8 + "</p>";
-	td8.insertAdjacentHTML('beforeEnd', td8body );
-	
-	var td9 = document.createElement("TD");
-	td9body = "<p align='center'>" + (var1/var9)*100 + "</p>";
-	td9.insertAdjacentHTML('beforeEnd', td9body );
-	
-	var1++;
-	row.appendChild(td1);
-	row.appendChild(td2);
-	row.appendChild(td3);
-	row.appendChild(td4);
-	row.appendChild(td5);
-	row.appendChild(td6);
-	row.appendChild(td7);
-	row.appendChild(td8);
-	row.appendChild(td9);
-	tbody.appendChild(row);
-	
-	if(color == "#FFCF7E") color = "#FFCF7E";
-	else color = "#FFCF7E"; 
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
-}
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
+	<script language="JavaScript">
+		var color = "#FFCF7E";
+		var var1 = 1;
+		function addRow(var2, var3, var4, var5, var6, var7, var8, var9) {
+
+			var tbody = document.getElementById("output_table").getElementsByTagName("TBODY")[0];
+			var row = document.createElement("TR");
+			row.style.backgroundColor = color;
+
+			var td1 = document.createElement("TD");
+			td1body = "<p align='center'>" + var1 + "</p>";
+			td1.insertAdjacentHTML('beforeEnd', td1body);
+
+			var td2 = document.createElement("TD");
+			td2body = "<p align='center'>" + var2 + "</p>";
+			td2.insertAdjacentHTML('beforeEnd', td2body);
+
+			var td3 = document.createElement("TD");
+			td3body = "<p align='center'>" + var3 + "</p>";
+			td3.insertAdjacentHTML('beforeEnd', td3body);
+
+			var td4 = document.createElement("TD");
+			td4body = "<p align='center'>" + var4 + "</p>";
+			td4.insertAdjacentHTML('beforeEnd', td4body);
+
+			var td5 = document.createElement("TD");
+			td5body = "<p align='center'>" + var5 + "</p>";
+			td5.insertAdjacentHTML('beforeEnd', td5body);
+
+			var td6 = document.createElement("TD");
+			td6body = "<p align='center'>" + var6 + "</p>";
+			td6.insertAdjacentHTML('beforeEnd', td6body);
+
+			var td7 = document.createElement("TD");
+			td7body = "<p align='center'>" + var7 + "</p>";
+			td7.insertAdjacentHTML('beforeEnd', td7body);
+
+			var td8 = document.createElement("TD");
+			td8body = "<p align='center'>" + var8 + "</p>";
+			td8.insertAdjacentHTML('beforeEnd', td8body);
+
+			var td9 = document.createElement("TD");
+			td9body = "<p align='center'>" + (var1 / var9) * 100 + "</p>";
+			td9.insertAdjacentHTML('beforeEnd', td9body);
+
+			var1++;
+			row.appendChild(td1);
+			row.appendChild(td2);
+			row.appendChild(td3);
+			row.appendChild(td4);
+			row.appendChild(td5);
+			row.appendChild(td6);
+			row.appendChild(td7);
+			row.appendChild(td8);
+			row.appendChild(td9);
+			tbody.appendChild(row);
+
+			if (color == "#FFCF7E")
+				color = "#FFCF7E";
+			else
+				color = "#FFCF7E";
+
+		}
 </script>
 
-
 </head>
-<body >
-<br>
-<?php
-echo "<p align='center'>( $_SESSION[subject_num]  &nbsp  $_SESSION[class_num] 분반 )</p>";
-?>	
-<table id = "output_table" border="0" width="800" align="center">
-	<tbody>
-    <tr>
-        <td width="60" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">등수</p>
-        </td>
-        <td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">학번</p>
-        </td>
-        <td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">이름</p>
-        </td>
-		 <td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">과제점수<br>(/100)</p>
-        </td>
-        <td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">중간고사점수<br>(/100)</p>
-        </td>
-        <td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">기말고사점수<br>(/100)</p>
-        </td>
-        <td width="90" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">합산점수<br>(/300)</p>
-        </td>
-        <td width="72" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">학점</p>
-        </td>
-		<td width="72" height="50" bgcolor="#FFFF7E" bordercolor="white">
-            <p align="center">백분율</p>
-        </td>
-    </tr>
-	</tbody>
-</table>
 
-<?
-	$data1 =oci_parse($connect,"select 수강.구성원번호, 구성원정보.이름,수강.과제점수, 수강.중간점수, 수강.기말점수, 수강.과제점수 + 수강.중간점수 + 수강.기말점수 as 총점, 수강.학점 from 수강,구성원정보 where 수강.과목번호 = '$_SESSION[subject_num]' and 수강.과목분반 = '$_SESSION[class_num]' and 수강.구성원번호 = 구성원정보.구성원번호 and 수강학기 = '$_SESSION[ss_term]' and 수강년도 = '$_SESSION[ss_year]' order by (총점) desc");
-	oci_execute($data1);
+<body>
+	<div>
+		<header>
 
-	$data = oci_parse($connect, "SELECT count(구성원번호) as 학생수 from 수강 where 과목번호 = '$_SESSION[subject_num]' and 수강학기 = '$_SESSION[ss_term]' and 수강년도 = '$_SESSION[ss_year]'");
-	oci_execute($data);
-	$result = oci_fetch_array($data);
-	
-	while($result1 = oci_fetch_array($data1)) {
-		
-	echo "<script language=javascript> addRow(\"$result1[구성원번호]\", \"$result1[이름]\", \"$result1[과제점수]\",  \"$result1[중간점수]\", \"$result1[기말점수]\",
-		\"$result1[총점]\", \"$result1[학점]\" ,  \"$result[학생수]\" ); </script>";
+		</header>
+		<nav>
 
-}
-?>
+		</nav>
 
+		<div>
+			<br>
+			<?php
+			echo "
+			<p align='center'>
+				( $_SESSION[subject_num]  &nbsp  $_SESSION[class_num] 분반 )
+			</p>";
+			?>
+			<table id = "output_table" border="0" width="800" align="center">
+				<tbody>
+					<tr>
+						<td width="60" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							등수
+						</p></td>
+						<td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							학번
+						</p></td>
+						<td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							이름
+						</p></td>
+						<td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							과제점수
+							<br>
+							(/100)
+						</p></td>
+						<td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							중간고사점수
+							<br>
+							(/100)
+						</p></td>
+						<td width="160" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							기말고사점수
+							<br>
+							(/100)
+						</p></td>
+						<td width="90" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							합산점수
+							<br>
+							(/300)
+						</p></td>
+						<td width="72" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							학점
+						</p></td>
+						<td width="72" height="50" bgcolor="#FFFF7E" bordercolor="white">
+						<p align="center">
+							백분율
+						</p></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<?
+			$data1 =oci_parse($connect,"select 수강.구성원번호, 구성원정보.이름,수강.과제점수, 수강.중간점수, 수강.기말점수, 수강.과제점수 + 수강.중간점수 + 수강.기말점수 as 총점, 수강.학점 from 수강,구성원정보 where 수강.과목번호 = '$_SESSION[subject_num]' and 수강.과목분반 = '$_SESSION[class_num]' and 수강.구성원번호 = 구성원정보.구성원번호 and 수강학기 = '$_SESSION[ss_term]' and 수강년도 = '$_SESSION[ss_year]' order by (총점) desc");
+			oci_execute($data1);
+
+			$data = oci_parse($connect, "SELECT count(구성원번호) as 학생수 from 수강 where 과목번호 = '$_SESSION[subject_num]' and 수강학기 = '$_SESSION[ss_term]' and 수강년도 = '$_SESSION[ss_year]'");
+			oci_execute($data);
+			$result = oci_fetch_array($data);
+
+			while($result1 = oci_fetch_array($data1)) {
+
+			echo "
+			<script language=javascript>
+addRow(\"$result1[구성원번호]\", \"$result1[이름]\", \"$result1[과제점수]\",  \"$result1[중간점수]\", \"$result1[기말점수]\",
+\"$result1[총점]\", \"$result1[학점]\" ,  \"$result[학생수]\" );
+			</script>";
+
+			}
+			?>
+
+		</div>
+
+		<footer>
+
+		</footer>
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
 </body>
-
-
 </html>
