@@ -1,13 +1,13 @@
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
 </head>
 <frameset rows="63, 1*" cols="1*">
 <frame name="topp" frameborder="0" marginwidth="10" marginheight="14" src="prof_menu.html" scrolling="no" noresize>
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" marginwidth="10" marginheight="14" src="prof_select.html">
 <noframes>
 <body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<p>ì´ íŽ˜ì´ì§€ë¥¼ ë³´ë ¤ë©´, í”„ë ˆìž„ì„ ë³¼ ìˆ˜ ìžˆëŠ” ë¸Œë¼ìš°ì €ê°€ í•„ìš”í•©ë‹ˆë‹¤.</p>
+<p>ÀÌ ÆäÀÌÁö¸¦ º¸·Á¸é, ÇÁ·¹ÀÓÀ» º¼ ¼ö ÀÖ´Â ºê¶ó¿ìÀú°¡ ÇÊ¿äÇÕ´Ï´Ù.</p>
 </body>
 </noframes>
 </frameset>

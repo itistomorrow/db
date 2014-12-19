@@ -3,40 +3,40 @@ include "includes/DBaccess.php";
 include "includes/session.php";
 
 echo " ";
-$query = "select ë¹„ë°€ë²ˆí˜¸ from í•™ê³¼êµ¬ì„±ì› where êµ¬ì„±ì›ë²ˆí˜¸='$_SESSION[ss_id]'";
+$query = "select ºñ¹Ğ¹øÈ£ from ÇĞ°ú±¸¼º¿ø where ±¸¼º¿ø¹øÈ£='$_SESSION[ss_id]'";
 $result = oci_parse($connect,$query);
 oci_execute($result);
 $data = oci_fetch_array($result, OCI_ASSOC);
 
-if($_POST[now_passwd] != $data['ë¹„ë°€ë²ˆí˜¸']) {
+if($_POST[now_passwd] != $data['ºñ¹Ğ¹øÈ£']) {
 	echo ("
 		<script language=javascript>
-			alert(\"í˜„ì¬ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”.\");
+			alert(\"ÇöÀçºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä.\");
 			history.go(-1);
 		</script>");
 	exit;
 }
 	
-$query = "update í•™ê³¼êµ¬ì„±ì› set ì—°ë½ì²˜='$_POST[phone_num]', `E-Mail`='$_POST[email]' where í•™ë²ˆ='$_SESSION[ss_id]'";
+$query = "update ÇĞ°ú±¸¼º¿ø set ¿¬¶ôÃ³='$_POST[phone_num]', `E-Mail`='$_POST[email]' where ÇĞ¹ø='$_SESSION[ss_id]'";
 oci_parse($query);
 
 if($_POST[new_passwd]) {
 	if($_POST[new_passwd] == $_POST[new_passwdCheck]) {
-		$query2 = "update í•™ê³¼êµ¬ì„±ì› set ë¹„ë°€ë²ˆí˜¸='$_POST[new_passwd]' where í•™ë²ˆ='$_SESSION[ss_id]'";
+		$query2 = "update ÇĞ°ú±¸¼º¿ø set ºñ¹Ğ¹øÈ£='$_POST[new_passwd]' where ÇĞ¹ø='$_SESSION[ss_id]'";
 		oci_parse($query2);
-		echo ("<script language=javascript> alert(\"ë¹„ë°€ë²ˆí˜¸ë¥¼ ìˆ˜ì •í•˜ì˜€ìŠµë‹ˆë‹¤.\"); </script>");
+		echo ("<script language=javascript> alert(\"ºñ¹Ğ¹øÈ£¸¦ ¼öÁ¤ÇÏ¿´½À´Ï´Ù.\"); </script>");
 	}
 	else {
 		echo ("
 			<script language=javascript>
-			alert(\"ìƒˆë¹„ë°€ë²ˆí˜¸ í™•ì¸ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\");
+			alert(\"»õºñ¹Ğ¹øÈ£ È®ÀÎÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.\");
 			history.go(-1);
 			</script>");
 		exit;
 	}
 }
 
-echo ("	<script language=javascript> alert(\"ì„±ê³µì ìœ¼ë¡œ ì •ë³´ë¥¼ ìˆ˜ì •í•˜ì˜€ìŠµë‹ˆë‹¤.\"); </script>");
+echo ("	<script language=javascript> alert(\"¼º°øÀûÀ¸·Î Á¤º¸¸¦ ¼öÁ¤ÇÏ¿´½À´Ï´Ù.\"); </script>");
 echo("<meta http-equiv='Refresh' content='0; URL=stu_mypage.html'>");
 
 ?>

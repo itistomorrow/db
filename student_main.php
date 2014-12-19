@@ -1,13 +1,13 @@
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
 </head>
 <frameset rows="63, 1*" cols="1*">
 <frame name="top" frameborder="0" src="stu_menu.html" scrolling="no" noresize>
 <frame name="bottom" frameborder="0" bordercolor="black" border="1" src="stu_class_search.html">
 <noframes>
 <body>
-<p>ì´ íŽ˜ì´ì§€ë¥¼ ë³´ë ¤ë©´, í”„ë ˆìž„ì„ ë³¼ ìˆ˜ ìžˆëŠ” ë¸Œë¼ìš°ì €ê°€ í•„ìš”í•©ë‹ˆë‹¤.</p>
+<p>ÀÌ ÆäÀÌÁö¸¦ º¸·Á¸é, ÇÁ·¹ÀÓÀ» º¼ ¼ö ÀÖ´Â ºê¶ó¿ìÀú°¡ ÇÊ¿äÇÕ´Ï´Ù.</p>
 </body>
 </noframes>
 </frameset>

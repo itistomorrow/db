@@ -6,7 +6,7 @@ include "includes/session.php";
 if(!$_POST[searchOpt]) {
 	echo ("
 		<script language=javascript>
-		alert(\"ê²€ìƒ‰ ë²”ìœ„ë¥¼ ì„ íƒí•´ ì£¼ì„¸ìš”\");
+		alert(\"°Ë»ö ¹üÀ§¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä\");
 		history.go(-1);
 		</script>");
 	exit;
@@ -14,7 +14,7 @@ if(!$_POST[searchOpt]) {
 else if (!$_POST[searchInput]) {
 	echo ("
 		<script language=javascript>
-		alert(\"ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”\");
+		alert(\"°Ë»ö¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä\");
 		history.go(-1);
 		</script>");
 	exit;

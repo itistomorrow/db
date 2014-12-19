@@ -5,7 +5,7 @@ include "includes/session.php";
 
 if($_POST[tableOpt] != 1 && strcmp($_POST[tableInput], "") == 0){
 	echo "<script language=javascript>
-		alert(\"ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”\");
+		alert(\"°Ë»ö¾î¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä\");
 		history.go(-1);
 		</script> ";
 	exit;
