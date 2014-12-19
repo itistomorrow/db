@@ -1,3 +1,4 @@
+<meta charset="euc-kr">
 <?
 include "includes/DBaccess.php";
 include "includes/session.php";
@@ -65,7 +66,7 @@ while($row_exist = oci_fetch_array($result_exist)) {
 	if($row_exist[과목번호] == $_POST[subject]) {
 		echo ("
 				<script language=javascript>
-				alert(\"중복 지원입니다.\");
+				alert(\"Overlap register!!\");
 				history.go(-1);
 				</script>");
 				exit;
@@ -78,7 +79,7 @@ if((($row_subnum[과목수])*$num) > 18)
  $row_subnum[과목수] = $row_subnum[과목수]-1;
 	echo ("
 		<script language=javascript>
-		alert(\"수강가능학점 초과\");
+		alert(\"excess Maximum register grade!!\");
 		history.go(-1);
 		</script>");
 		exit;
@@ -88,7 +89,7 @@ if(($row_curnum[구성원번호]+1) > $row_maxnum[수강인원])
 {
 	echo ("
 		<script language=javascript>
-		alert(\"인원 초과333\");
+		alert(\"excess Maximum register number!!\");
 		history.go(-1);
 		</script>");
 		exit;
@@ -98,7 +99,7 @@ if(($row_curnum[구성원번호]+1) > $row_maxnum[수강인원])
 	if($row_subject[시작시간] == $row_mysub[시작시간] && $row_subject[강의요일] == $row_mysub[강의요일]){
 		echo ("
 			<script language=javascript>
-			alert(\"강의시간이 겹칩니다.\");
+			alert(\"Overlap time!!\");
 			history.go(-1);
 			</script>");
 			exit;
@@ -116,7 +117,7 @@ if($row_subject[과목번호]) {
 			oci_execute($result_get_class);
 			echo("
 				<script language=javascript>
-				alert(\"데이터 삽입.\");
+				alert(\"Insert complete.\");
 				</script>");
 }
 

@@ -38,5 +38,5 @@ $result = oci_parse($connect, $query);
 oci_execute($result);
 
 echo("	<script language=javascript> alert(\"1111\"); </script>");
-echo("<meta http-equiv='Refresh' content='0; URL=ass_subject_insert.html'>");
+echo("<meta http-equiv='Refresh' content='0; URL=ass_student_insert.html'>");
 ?>

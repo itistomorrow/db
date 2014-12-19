@@ -1,3 +1,4 @@
+<meta charset="euc-kr">
 <?
 include "includes/DBaccess.php";
 include "includes/session.php";
@@ -23,6 +24,6 @@ else if (!$_POST[searchInput]) {
 $_SESSION[ss_searchopt] = $_POST[searchOpt];
 $_SESSION[ss_searchsub] = $_POST[searchInput];
 
-echo("<meta http-equiv='Refresh' content='0; URL=stu_class_search.html'>");
+echo("<meta http-equiv='Refresh' content='0; URL=stu_class_list.html'>");
 
 ?>

@@ -40,7 +40,7 @@ if ($result['구성원번호'] == "") {
 	$flag = $result['구성원구분'];
 
 	if ($flag == "학생") {
-		echo("<meta http-equiv='Refresh' content='0; URL=student_main.php'>");
+		echo("<meta http-equiv='Refresh' content='0; URL=stu_register.html'>");
 	} else if ($flag == "교수") {
 		echo("<meta http-equiv='Refresh' content='0; URL=prof_select.html'>");
 	} else if ($flag == "조교") {

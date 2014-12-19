@@ -1,3 +1,4 @@
+<meta charset="euc-kr">
 <?
 include "includes/DBaccess.php";
 include "includes/session.php";

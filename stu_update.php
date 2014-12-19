@@ -1,3 +1,4 @@
+<meta charset="euc-kr">
 <?
 include "includes/DBaccess.php";
 include "includes/session.php";
@@ -40,10 +41,3 @@ if($_POST[new_passwd]) {
 
 echo("<meta http-equiv='Refresh' content='0; URL=stu_mypage.html'>");
 ?>
-<html>
-    <meta http-equiv="content-type" content="text/html; charset=euc-kr">
-<head>
-</head>
-<body>
-</body>
-</html>
