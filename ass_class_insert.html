@@ -27,19 +27,77 @@ include "includes/session.php";
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style>
+			.syntaxhighlighter.bootstrap {
+				padding: 9px 14px;
+				margin-bottom: 14px;
+				background: #f7f7f9;
+				border: 1px solid #e1e1e8;
+				border-radius: 4px;
+			}
+			h1, h2, h3, h4, h5, h6, p, a, div, code {
+				font-family: 'Malgun Gothic';
+			}
+			.bs-example:after {
+				content: "예제";
+			}
+		</style>
 	</head>
 
 	<body>
 		<div>
-			<header>
+			<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+				<? $ids = $_SESSION["ss_id"];
+				$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
+				oci_execute($result);
+				$data = oci_fetch_array($result);
+				?>
+				<div class="container">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand">
+							<?php echo $data["구성원구분"]?>
+						</div>
+					</div>
 
+					<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+						<ul class="nav navbar-nav">
+							<li>
+								<a href="ass_attend.html">과목 확인</a>
+							</li>
+							<li>
+								<a href="ass_modify.html">정보 변경</a>
+							</li>
+							<li class="active">
+								<a href="ass_class_insert.html">과목 추가</a>
+							</li>
+							<li>
+								<a href="ass_student_insert.html">학생 추가</a>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<p class ="nav navbar-text">
+								<?php echo $data["이름"]?>
+							</p>
+							<li>
+								<a href="Logout.php">로그아웃</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</header>
 			<nav>
 
 			</nav>
 
 			<div>
-				<form name=SEARCH method=POST action="ass_class_insert.php">
+				<form name="SEARCH" method="POST" action="ass_class_insert.php">
 					<p>
 						&nbsp;
 					</p>
@@ -199,28 +257,4 @@ include "includes/session.php";
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 	</body>
-</html>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
-		<style type="text/css">
-			body {
-				font-family: 맑은고딕;
-				font-size: 10pt;
-			}
-			td {
-				font-family: 맑은고딕;
-				font-size: 10pt;
-			}
-		</style>
-
-	</head>
-
-	<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" >
-
-	</body>
-
 </html>

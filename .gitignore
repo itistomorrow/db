@@ -1,2 +1,4 @@
 #eclipse projects
 .project
+#backups
+*.bak

@@ -1,6 +1,6 @@
 <?php
-include "includes/DBaccess.php";
-include "includes/session.php";
+include_once "includes/DBaccess.php";
+include_once "includes/session.php";
 $_SESSION[ss_tableOpt] = 1;
 $_SESSION[ss_tableInp] = "";
 
@@ -10,29 +10,6 @@ $_SESSION[ss_tableInp] = "";
 <html lang="kr">
 	<head>
 		<meta charset="euc-kr">
-		<script>
-		//for navbar
-			function my_subject() {
-				window.location.assign("prof_select.html");
-
-			}
-
-			function attend() {
-				window.location.assign("prof_attend.html");
-
-			}
-
-			function insert_score() {
-				window.location.assign("prof_input.html");
-
-			}
-
-			function check_score() {
-				window.location.assign("prof_check.html");
-
-			}
-
-		</script>
 
 		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
 		Remove this if you use the .htaccess -->
@@ -53,6 +30,22 @@ $_SESSION[ss_tableInp] = "";
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style>
+			.syntaxhighlighter.bootstrap {
+				padding: 9px 14px;
+				margin-bottom: 14px;
+				background: #f7f7f9;
+				border: 1px solid #e1e1e8;
+				border-radius: 4px;
+			}
+			h1, h2, h3, h4, h5, h6, p, a, div, code {
+				font-family: 'Malgun Gothic';
+			}
+			.bs-example:after {
+				content: "예제";
+			}
+		</style>
+
 		<script language="JavaScript">
 			var color = "#FFCF7E";
 
@@ -100,29 +93,53 @@ $_SESSION[ss_tableInp] = "";
 
 	<body>
 		<div>
-			<header>
-
-			</header>
-			<nav>
-				<!-- nav bar -->
-				<?php
-				$ids = $_SESSION["ss_id"];
-				$result = oci_parse($connect,"SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
+			<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+				<? $ids = $_SESSION["ss_id"];
+				$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
 				oci_execute($result);
 				$data = oci_fetch_array($result);
 				?>
-				<input type="submit" name="btn1" onClick="my_subject()" value="my class">
-				&nbsp;
-				<input type="submit" name="btn1" onClick="attend()" value="attend page">
-				&nbsp;
-				<input type="submit" name="btn1" onClick="insert_score()" value="insert score">
-				&nbsp;
-				<input type="submit" name="btn1" onClick="check_score()" value="check score">
-				<?php echo $data["이름"]?>  <?php echo $data["구성원구분"]?>
-				<a href="Logout.php">
-				<input type="submit" name="btn1" value="Logout">
-				</a>
-			</nav>
+				<div class="container">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand">
+							<?php echo $data["구성원구분"]?>
+						</div>
+					</div>
+
+					<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a href="prof_select.html">과목 선택</a>
+							</li>
+							<li>
+								<a href="prof_attend.html">출석 현황</a>
+							</li>
+							<li>
+								<a href="prof_input.html">성적 입력</a>
+							</li>
+							<li>
+								<a href="prof_check.html">과목 확인</a>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<p class ="nav navbar-text">
+								<?php echo $data["이름"]?>
+							</p>
+							<li>
+								<a href="Logout.php">로그아웃</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			
 
 			<div>
 				<form>

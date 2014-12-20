@@ -31,68 +31,128 @@ $_SESSION[ss_tableInp] = "";
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style>
+			.syntaxhighlighter.bootstrap {
+				padding: 9px 14px;
+				margin-bottom: 14px;
+				background: #f7f7f9;
+				border: 1px solid #e1e1e8;
+				border-radius: 4px;
+			}
+			h1, h2, h3, h4, h5, h6, p, a, div, code {
+				font-family: 'Malgun Gothic';
+			}
+			.bs-example:after {
+				content: "예제";
+			}
+		</style>
+
+		<script language="JavaScript">
+						var color = "#FFCF7E";
+
+			function addRow(s_id, s_name,homework, s_mid, s_fin, s_score)
+			{
+			var tbody = document.getElementById("table_list").getElementsByTagName("TBODY")[0];
+			var row = document.createElement("TR");
+			row.style.backgroundColor = color;
+
+			var fm = document.createElement("FORM");
+			fm.method="POST";
+			fm.action="prof_input;
+
+			var td1 = document.createElement("TD");
+			td1body = "<p align='center'>"+s_id+"<input align='center' size='6' type='hidden' maxlength='1' name='s_id' value="+ s_id + ">";
+			td1.insertAdjacentHTML('beforeEnd', td1body );
+
+			var td2 = document.createElement("TD");
+			td2body = "<p align='center'>"+ s_name +"</p>";
+			td2.insertAdjacentHTML('beforeEnd', td2body );
+
+			var td3 = document.createElement("TD");
+			td3body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='homework' value=>";
+			td3.insertAdjacentHTML('beforeEnd', td3body );
+
+			var td4 = document.createElement("TD");
+			td4body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='s_mid' value=>";
+			td4.insertAdjacentHTML('beforeEnd', td4body );
+
+			var td5 = document.createElement("TD");
+			td5body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='s_fin' value=>";
+			td5.insertAdjacentHTML('beforeEnd', td5body );
+
+			var td6 = document.createElement("TD");
+			td6body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='s_score' value=>";
+			td6.insertAdjacentHTML('beforeEnd', td6body );
+
+			var td7 = document.createElement("TD");
+			td7body = "<p align='center'><input align='center' size='2' type='submit' maxlength='2' value='수정하기'>";
+			td7.insertAdjacentHTML('beforeEnd', td7body );
+
+			fm.appendChild(td1);
+			fm.appendChild(td2);
+			fm.appendChild(td3);
+			fm.appendChild(td4);
+			fm.appendChild(td5);
+			fm.appendChild(td6);
+			fm.appendChild(td7);
+
+			row.appendChild(fm);
+
+			tbody.appendChild(row);
+
+			if(color == "#FFCF7E") color = "#FFCF7E";
+			else color = "#FFCF7E";
+			}
+		</script>
 	</head>
 
 	<body>
 		<div>
-			<header>
-				<script language="JavaScript">
-										var color = "#FFCF7E";
+			<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+				<? $ids = $_SESSION["ss_id"];
+				$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
+				oci_execute($result);
+				$data = oci_fetch_array($result);
+				?>
+				<div class="container">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand">
+							<?php echo $data["구성원구분"]?>
+						</div>
+					</div>
 
-					function addRow(s_id, s_name,homework, s_mid, s_fin, s_score)
-					{
-					var tbody = document.getElementById("table_list").getElementsByTagName("TBODY")[0];
-					var row = document.createElement("TR");
-					row.style.backgroundColor = color;
+					<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+						<ul class="nav navbar-nav">
+							<li>
+								<a href="prof_select.html">과목 선택</a>
+							</li>
+							<li>
+								<a href="prof_attend.html">출석 현황</a>
+							</li>
+							<li class="active">
+								<a href="prof_input.html">성적 입력</a>
+							</li>
+							<li>
+								<a href="prof_check.html">과목 확인</a>
+							</li>
+						</ul>
 
-					var fm = document.createElement("FORM");
-					fm.method="POST";
-					fm.action="prof_input;
-
-					var td1 = document.createElement("TD");
-					td1body = "<p align='center'>"+s_id+"<input align='center' size='6' type='hidden' maxlength='1' name='s_id' value="+ s_id + ">";
-					td1.insertAdjacentHTML('beforeEnd', td1body );
-
-					var td2 = document.createElement("TD");
-					td2body = "<p align='center'>"+ s_name +"</p>";
-					td2.insertAdjacentHTML('beforeEnd', td2body );
-
-					var td3 = document.createElement("TD");
-					td3body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='homework' value=>";
-					td3.insertAdjacentHTML('beforeEnd', td3body );
-
-					var td4 = document.createElement("TD");
-					td4body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='s_mid' value=>";
-					td4.insertAdjacentHTML('beforeEnd', td4body );
-
-					var td5 = document.createElement("TD");
-					td5body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='s_fin' value=>";
-					td5.insertAdjacentHTML('beforeEnd', td5body );
-
-					var td6 = document.createElement("TD");
-					td6body = "<p align='center'><input align='center' size='3' type='text' maxlength='3' name='s_score' value=>";
-					td6.insertAdjacentHTML('beforeEnd', td6body );
-
-					var td7 = document.createElement("TD");
-					td7body = "<p align='center'><input align='center' size='2' type='submit' maxlength='2' value='수정하기'>";
-					td7.insertAdjacentHTML('beforeEnd', td7body );
-
-					fm.appendChild(td1);
-					fm.appendChild(td2);
-					fm.appendChild(td3);
-					fm.appendChild(td4);
-					fm.appendChild(td5);
-					fm.appendChild(td6);
-					fm.appendChild(td7);
-
-					row.appendChild(fm);
-
-					tbody.appendChild(row);
-
-					if(color == "#FFCF7E") color = "#FFCF7E";
-					else color = "#FFCF7E";
-					}
-				</script>
+						<ul class="nav navbar-nav navbar-right">
+							<p class ="nav navbar-text">
+								<?php echo $data["이름"]?>
+							</p>
+							<li>
+								<a href="Logout.php">로그아웃</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</header>
 			<nav>
 

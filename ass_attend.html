@@ -72,56 +72,69 @@ $_SESSION[ss_term] = '2';
 			}
 		</script>
 
-		<script language="javascript">
-			// for nav bar
-			function sub_check() {
-				window.location.assign("ass_attend.html");
-
+		<style>
+			.syntaxhighlighter.bootstrap {
+				padding: 9px 14px;
+				margin-bottom: 14px;
+				background: #f7f7f9;
+				border: 1px solid #e1e1e8;
+				border-radius: 4px;
 			}
-
-			function modi_info() {
-				window.location.assign("ass_modify.html");
-
+			h1, h2, h3, h4, h5, h6, p, a, div, code {
+				font-family: 'Malgun Gothic';
 			}
-
-			function insert_sub() {
-				window.location.assign("ass_class_insert.html");
-
+			.bs-example:after {
+				content: "예제";
 			}
+		</style>
 
-			function insert_stu() {
-				window.location.assign("ass_subject_insert.html");
-
-			}
-
-		</script>
 	</head>
 
 	<body>
 		<div>
-			<header>
-
-			</header>
-			<nav>
-				&nbsp;
-				<input type="submit" name="btn1" onClick="sub_check()" value="subject check">
-				&nbsp;
-				<input type="submit" name="btn1" onClick="modi_info()" value="modify information">
-				&nbsp;
-				<input type="submit" name="btn1" onClick="insert_sub()" value="insert subject">
-				&nbsp;
-				<input type="submit" name="btn1" onClick="insert_stu()" value="insert student">
-
+			<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
 				<? $ids = $_SESSION["ss_id"];
 				$result = oci_parse($connect, "SELECT * FROM 구성원정보 where 구성원번호 ='$ids'");
 				oci_execute($result);
 				$data = oci_fetch_array($result);
 				?>
-				<?php echo $data["이름"] ?> <?php echo $data["구성원구분"]?>
-				<a href="logout.php">
-				<input type="submit" name="btn1" value="Logout">
-				</a>
-			</nav>
+				<div class="container">
+					<div class="navbar-header">
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand"><?php echo $data["구성원구분"]?></div>
+					</div>
+				
+					<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a href="ass_attend.html">과목 확인</a>
+							</li>
+							<li>
+								<a href="ass_modify.html">정보 변경</a>
+							</li>
+							<li>
+								<a href="ass_class_insert.html">과목 추가</a>
+							</li>
+							<li>
+								<a href="ass_student_insert.html">학생 추가</a>
+							</li>
+						</ul>
+											
+						<ul class="nav navbar-nav navbar-right">
+							<p class ="nav navbar-text"><?php echo $data["이름"]?></p>
+							<li>
+							<a href="Logout.php">로그아웃</a>								
+							</li>
+						</ul>						
+					</nav>
+				</div>				
+			</header>
+		
 
 			<div>
 				<form  name=TABLE method=POST action="ass_attend.php">

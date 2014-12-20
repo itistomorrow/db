@@ -1,6 +1,6 @@
 <?
-include "includes/DBaccess.php";
-include "includes/session.php";
+include_once "includes/DBaccess.php";
+include_once "includes/session.php";
 
 $_SESSION[ss_tableOpt] = 1;
 $_SESSION[ss_tableInp] = "";
@@ -30,6 +30,22 @@ $_SESSION[ss_tableInp] = "";
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style>
+			.syntaxhighlighter.bootstrap {
+				padding: 9px 14px;
+				margin-bottom: 14px;
+				background: #f7f7f9;
+				border: 1px solid #e1e1e8;
+				border-radius: 4px;
+			}
+			h1, h2, h3, h4, h5, h6, p, a, div, code {
+				font-family: 'Malgun Gothic';
+			}
+			.bs-example:after {
+				content: "¿¹Á¦";
+			}
+		</style>
+
 		<script language="JavaScript">
 			var color = "#FFFF7E";
 
